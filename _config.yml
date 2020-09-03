@@ -1,0 +1,125 @@
+# ---------------- #
+#   Main Configs   #
+# ---------------- #
+baseurl:
+url: https://side-wipe.github.io
+date_format: "ordinal"
+title: SideWipe's Blog
+subtitle: "把一件事做到极致，其他的都会有"
+description: "闲庭信步笑看花开花落 宠辱不惊冷观云卷云舒"
+keywords: 叶欣, side-wipe, SideWipe
+timezone: Asia/Shanghai
+encoding: "utf-8"
+side_bar_repo_limit: 5
+
+# ---------------- #
+#      Author      #
+# ---------------- #
+author: SideWipe
+organization: side-wipe.github.io
+organization_url: side-wipe.github.io
+github_username: side-wipe
+location: ShangHai, China
+email: 2440413318@qq.com
+
+# ---------------- #
+#    Navigation    #
+# ---------------- #
+navs:
+  -
+    href: /
+    label: 首页
+
+  -
+    href: /categories/
+    label: 分类
+
+#   -
+#     href: /archives/
+#     label: 归档
+
+  -
+    href: /wiki/
+    label: 维基
+
+  -
+    href: /links/
+    label: 链接
+
+  -
+    href: /about/
+    label: 关于
+
+# ---------------- #
+#       RSS        #
+# ---------------- #
+subscribe_rss: /feed.xml
+
+# ---------------- #
+#      Jekyll      #
+# ---------------- #
+markdown: kramdown
+kramdown:
+    input: GFM
+highlighter: rouge
+paginate: 10
+lsi: false
+quiet: false
+excerpt_separator: "\n\n"
+permalink: /:year/:month/:day/:title/
+gems:
+    - jekyll-github-metadata
+    - rouge
+#     - jekyll-html-pipeline
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-feed
+    - jemoji
+#     - jekyll-mentions
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
+
+repository: side-wipe/side-wipe.github.io
+
+# ---------------- #
+#      Comments    #
+# ---------------- #
+# support provider: disqus, gitment, gitalk
+comments_provider: gitalk
+# !!!重要!!! 请修改下面这些信息为你自己申请的
+# !!!Important!!! Please modify infos below to yours
+# https://disqus.com
+disqus:
+    username: 
+# https://imsun.net/posts/gitment-introduction/
+gitment:
+    owner: side-wipe
+    repo: side-wipe.github.io
+    oauth:
+        client_id: 0cd5415a3370733a2af5
+        client_secret: 15f4943d6c3b7f65c8600c9674dcea9f998704a5
+# https://github.com/gitalk/gitalk#install
+gitalk:
+    owner: side-wipe
+    repo: side-wipe.github.io
+    clientID: 0cd5415a3370733a2af5
+    clientSecret: 15f4943d6c3b7f65c8600c9674dcea9f998704a5
+# 在使用其它评论组件时可点击显示 Disqus
+lazy_load_disqus : false
+
+# ---------------- #
+#      Search      #
+# ---------------- #
+simple_jekyll_search:
+    # 是否支持全文搜索
+    fulltext: true
+    # 最多显示多少条搜索结果
+    limit: 10
+
+# ---------------- #
+#    Analytics     #
+# ---------------- #
+google:
+    analytics_id: UA-80669434-1
