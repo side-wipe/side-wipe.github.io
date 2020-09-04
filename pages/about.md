@@ -2,17 +2,16 @@
 layout: page
 title: About
 description: 打码改变世界
-keywords: Chen kai, 陈凯
+keywords: Side Wipe
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-我是陈凯，码梦为生，笔耕不辍。
 
 仰慕「优雅编码的艺术」。
 
-坚信熟能生巧，努力改变人生。
+懂的越多，不懂的就越多
 
 ## 联系
 
