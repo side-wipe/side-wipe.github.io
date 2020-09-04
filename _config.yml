@@ -98,14 +98,14 @@ gitment:
     owner: side-wipe
     repo: side-wipe.github.io
     oauth:
-        client_id: 0cd5415a3370733a2af5
-        client_secret: 15f4943d6c3b7f65c8600c9674dcea9f998704a5
+        client_id: 4261dbb9b3baa01d2cdd
+        client_secret: 72050c924611614bddd9a3d618e11ff4ce0b974c
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: side-wipe
     repo: side-wipe.github.io
-    clientID: 0cd5415a3370733a2af5
-    clientSecret: 15f4943d6c3b7f65c8600c9674dcea9f998704a5
+    clientID: 4261dbb9b3baa01d2cdd
+    clientSecret: 72050c924611614bddd9a3d618e11ff4ce0b974c
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
