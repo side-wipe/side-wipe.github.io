@@ -7,7 +7,7 @@
 
 **[在线预览 &rarr;](https://side-wipe.github.io)**
 
-![screenshot home](https://side-wipe.github.io/assets/images/screenshots/home1.png)
+![screenshot home](https://side-wipe.github.io/assets/images/screenshots/home.png)
 
 
 本本博客外观基于 [mzlogin](https://mazhuang.org) 修改,感谢！
