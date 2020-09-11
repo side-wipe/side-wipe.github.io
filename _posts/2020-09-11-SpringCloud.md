@@ -29,7 +29,7 @@ keywords: SpringCloud ribbon
  
 &nbsp; ![](/images/posts/springCloud/ribbon2.png)  
 
-使用`@LoadBalnaced`注解，那么返回的restTemplate注解就是一个具有负载算法的对象，会在调用服务时，会从注册中心获取被调用方的所有可调用实例列表，并依据负载均衡算法进行服务调用。 
+&nbsp; &nbsp;  使用`@LoadBalnaced`注解，那么返回的restTemplate注解就是一个具有负载算法的对象，会在调用服务时，会从注册中心获取被调用方的所有可调用实例列表，并依据负载均衡算法进行服务调用。 
 
 - 如果需要指定负载均衡算法，则在配置类中返回一个实现IRule接口的负载算法对象即可：  
 &nbsp; ![](/images/posts/springCloud/ribbon5.png)  
@@ -50,7 +50,7 @@ keywords: SpringCloud ribbon
 这种配置方式不需要再添加其他的java代码
 
 - 通过javaConfig的方式配置
-定义负载算法的配置类：跟基础用法的原理一样，通过配置类向容器中加入实现IRule接口的负载算法即可。 
+&nbsp; &nbsp; 定义负载算法的配置类：跟基础用法的原理一样，通过配置类向容器中加入实现IRule接口的负载算法即可。 
 IRule接口是一个ribbon-balancer包下的一个上层接口，大致结构如下，使用的是模板方法模式，其实现类实现了不同的负载均衡算法：
 
 类图如下：
@@ -236,7 +236,7 @@ IRule接口是一个ribbon-balancer包下的一个上层接口，大致结构如
 	    }
 	}
 
-可以看到这次我不是直接返回一个springcloud包中的RestTemplate的实例，而是一个自定义的TulingRestTemplate，该类代码如下：  
+&nbsp; &nbsp; 可以看到这次我不是直接返回一个springcloud包中的RestTemplate的实例，而是一个自定义的TulingRestTemplate，该类代码如下：  
 
 	package com.tuling.config;
 	
@@ -359,9 +359,9 @@ IRule接口是一个ribbon-balancer包下的一个上层接口，大致结构如
 	}
 
 
-代码很多，大概思路就是通过继承RestTemplate类，并复写doExecute方法（在RestTemplate源码中可以看到，所有的调用方法最后都会走doExecute方法）。 
+&nbsp; &nbsp; 代码很多，大概思路就是通过继承RestTemplate类，并复写doExecute方法（在RestTemplate源码中可以看到，所有的调用方法最后都会走doExecute方法）。 
 
-代码大体意思是在调用时，去拉去注册中心该服务的服务实例列表，然后通过random随机算法来选出一个服务实例来进行调用。这样就相当于对RestTemplate进行了一个扩展，让它在调用服务时，拥有了负载均衡的功能。 
+&nbsp; &nbsp; 大体意思是在调用时，去拉取注册中心该服务的服务实例列表，然后通过random随机算法来选出一个服务实例来进行调用。这样就相当于对RestTemplate进行了一个扩展，让它在调用服务时，拥有了负载均衡的功能。 
 
 - **那么ribbon也是通过扩展restTemplate来实现负载均衡的。**
 
