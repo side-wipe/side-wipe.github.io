@@ -1,7 +1,7 @@
 ---
 layout: post
 title: springcloud之ribbon
-categories: Linux
+categories: SpringCloud
 description: springcloud之ribbon
 keywords: springcloud ribbon
 ---
@@ -15,16 +15,22 @@ keywords: springcloud ribbon
 
 ### **基本用法**  
 
-一般情况下，我们使用restTemplate做服务调用，代码如下：  
+- 一般情况下，我们使用restTemplate做服务调用，代码如下： 
+  
+    ResponseEntity<ProductInfo> responseEntity= restTemplate.getForEntity(uri+orderInfo.getProductNo(), ProductInfo.class);
 
-&nbsp; ![](/images/posts/springCloud/rest1.png)   
+    ProductInfo productInfo = responseEntity.getBody();
+
+    if(productInfo == null) {
+   	   return "无数据";
+    }
 当调用的服务有多个实例，需要做负载均衡是，则引入了ribbon，使用如下： 
  
 &nbsp; ![](/images/posts/springCloud/ribbon2.png)  
 
 使用`@LoadBalnaced`注解，那么返回的restTemplate注解就是一个具有负载算法的对象，会在调用服务时，会从注册中心获取被调用方的所有可调用实例列表，并依据负载均衡算法进行服务调用。 
 
-如果需要指定负载均衡算法，则在配置类中返回一个IRule负载算法即可：  
+- 如果需要指定负载均衡算法，则在配置类中返回一个实现IRule接口的负载算法对象即可：  
 &nbsp; ![](/images/posts/springCloud/ribbon5.png)  
  
 **问题：那么ribbon是怎么让restTemplate具有负载均衡功能的呢？后面再分析原理**  
@@ -205,7 +211,7 @@ IRule接口是一个ribbon-balancer包下的一个上层接口，大致结构如
 
 
 
-综上，就通过javaConfig的方式，实现了指定负载均衡算法，并且可以指定使用自定义的负载算法。
+- 综上，就通过javaConfig的方式，实现了指定负载均衡算法，并且可以指定使用自定义的负载算法。
 
 ## 2.ribbon的原理
 - 先通过一个例子来说明，也可以理解为手写实现一个简单的ribbon嵌入到restTemplate中： 
