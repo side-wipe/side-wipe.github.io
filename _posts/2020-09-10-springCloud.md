@@ -1,9 +1,9 @@
 ---
 layout: post
-title: springcloud之ribbon
+title: SpringCloud之ribbon
 categories: SpringCloud
-description: springcloud之ribbon
-keywords: springcloud ribbon
+description: SpringCloud之ribbon
+keywords: SpringCloud ribbon
 ---
 
 # springcloud中负载均衡工具ribbon用法及原理
@@ -17,13 +17,14 @@ keywords: springcloud ribbon
 
 - 一般情况下，我们使用restTemplate做服务调用，代码如下： 
   
-    ResponseEntity<ProductInfo> responseEntity= restTemplate.getForEntity(uri+orderInfo.getProductNo(), ProductInfo.class);
+	    ResponseEntity<ProductInfo> responseEntity= restTemplate.getForEntity(uri+orderInfo.getProductNo(), ProductInfo.class);
+	
+	    ProductInfo productInfo = responseEntity.getBody();
+	
+	    if(productInfo == null) {
+	   	   return "无数据";
+	    } 
 
-    ProductInfo productInfo = responseEntity.getBody();
-
-    if(productInfo == null) {
-   	   return "无数据";
-    }
 当调用的服务有多个实例，需要做负载均衡是，则引入了ribbon，使用如下： 
  
 &nbsp; ![](/images/posts/springCloud/ribbon2.png)  
