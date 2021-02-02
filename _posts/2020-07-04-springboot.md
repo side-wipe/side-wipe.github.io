@@ -64,7 +64,7 @@ keywords: springboot autoconfiguration
 
 &nbsp; ![](/images/posts/springboot/autoconfig11.png)      
 
-&nbsp; &nbsp;  这里也有一个对EnableAutoConfiguration的配置，这是spring自定义的SPI服务，通过实现自动装配注解，在容器启动，解析启动类@EnableAutoConfiguration注解时，所有jar包下META-INF/spring.factories目录配置为EnableAutoConfiguration的类，都会被解析并注册到spring容器。
+&nbsp; &nbsp;  这里也有一个对EnableAutoConfiguration的配置，这是spring自定义的SPI服务。通过实现自动装配注解，在容器启动，解析启动类@EnableAutoConfiguration注解时，所有jar包下META-INF/spring.factories目录配置为EnableAutoConfiguration的类，都会被解析并注册到spring容器。
 
 &nbsp; &nbsp; **注册到spring容器后，下一个问题就是怎么自动读取我们yml文件的配置？**
 
@@ -72,10 +72,11 @@ keywords: springboot autoconfiguration
 
 &nbsp; ![](/images/posts/springboot/autoconfig12.png)      
 
-图中标识就是开启获取文件属性注解，进入查看
+上图标识的就是开启获取文件属性注解，点击进入
  
 &nbsp; ![](/images/posts/springboot/autoconfig13.png)      
-&nbsp; &nbsp;  @ConfigurationProperties(DUBBO_PREFIX)这句注解就是把yml文件中，以dubbo为前缀的配置项，都映射到本类的实例化对象中，同时在这里可以看到所有的可配置项。
+&nbsp; &nbsp;  @ConfigurationProperties(DUBBO_PREFIX)这句注解就是把yml文件中，以dubbo为前缀的配置项，都映射到本类的实例化对象对应的属性中，同时在这里可以看到所有的可配置项。  
+&nbsp; &nbsp;  也就是说，在自动装配阶段，通过spring.factories配置，会随着容器启动解析dubbo框架中的自动装配类；这个类中会包含读取yml的逻辑。
 
 
 ***总结***  
@@ -86,7 +87,7 @@ keywords: springboot autoconfiguration
 
 ## 补充：基于aop的扩展机制 
 
-&nbsp; &nbsp; springboot除了使用上述的这种扩展方式来集成很多第三方框架以外，还可以利用aop的方式来集成框架，比如常见的事务框架，线程池，Eureka等，只需要在配置类上面加上@EnableTransactionManagement，@EnableAsync，@EnableEurekaServer启动注解，然后在对应方法上加上@Transactional，@Async注解即可使用（注意，事务框架比较特殊，它依赖于Aspectj，使用@EnableTransactionManagement注一定要加上@EnableAspectJAutoProxy）。 
+&nbsp; &nbsp; springboot除了使用上述的这种扩展方式来集成很多第三方框架以外，还可以利用aop的方式来集成框架，比如常见的事务框架，线程池，Eureka等，只需要在配置类上面加@EnableTransactionManagement，@EnableAsync，@EnableEurekaServer启动注解，然后在对应方法上加上@Transactional，@Async注解即可使用（注意，事务框架比较特殊，它依赖于Aspectj，使用@EnableTransactionManagement注一定要加上@EnableAspectJAutoProxy）。 
 
 &nbsp; &nbsp; 这种集成方式基于aop的方式扩展，在容器启动时，对切入点创建动态代理。拿@EnableAsync注解举例；@EnableAsync使用了这种方式，注解源码如下：  
 &nbsp; ![](/images/posts/springboot/autoconfig14.png)        
